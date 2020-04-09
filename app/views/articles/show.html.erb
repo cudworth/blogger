@@ -15,13 +15,17 @@
 
 <br>
 
-<%= link_to 'Edit article', edit_article_path(@article) %>
+<% if logged_in? %>
 
-<br>
+    <%= link_to 'Edit article', edit_article_path(@article) %>
 
-<%= link_to 'Delete article', article_path(@article), data: {confirm: 'Are you sure you want to delete the article?'},method: :delete %>
+    <br>
 
-<br>
+    <%= link_to 'Delete article', article_path(@article), data: {confirm: 'Are you sure you want to delete the article?'},method: :delete %>
+
+    <br>
+
+<% end %>
 
 <h3>Comments (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
